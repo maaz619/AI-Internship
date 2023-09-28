@@ -1,5 +1,5 @@
 //prod
-const BASE_URI = `http://api.plnews.live`
+const BASE_URI = `https://api.plnews.live`
 //dev
 //const BASE_URI = `http://localhost:8090`
 

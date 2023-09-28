@@ -85,7 +85,7 @@ app.post('/generate', async (req, res) => {
 
 app.get('/get-all', (req, res) => {
     try {
-        let sql = `SELECT * FROM stories`
+        let sql = `SELECT * FROM stories ORDER BY upvotes DESC LIMIT 10`
         connection.query(sql, (err, result) => {
             if (err) {
                 return res.status(400).send(err)
