@@ -1,4 +1,8 @@
-const BASE_URI = `http://localhost:8090`
+//prod
+const BASE_URI = `http://api.plnews.live`
+//dev
+//const BASE_URI = `http://localhost:8090`
+
 
 const getAll = async () => {
     const res = await fetch(BASE_URI + "/get-all", {

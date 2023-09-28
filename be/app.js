@@ -9,13 +9,13 @@ app.use(morgan("dev"))
 app.use(express.json())
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
 app.get('/', (req, res) => {
-    res.send("Hello world!")
+    res.send("Welcome to AI api!")
 })
 
 app.post('/upvote/:id', async (req, res) => {
@@ -36,7 +36,7 @@ app.post('/upvote/:id', async (req, res) => {
 app.post('/create-table', (req, res) => {
     try {
         const { name } = req.query
-        let sql = `CREATE TABLE ${name} (id INT AUTO_INCREMENT PRIMARY KEY, prompts VARCHAR(255), stories VARCHAR(255), upvotes INT)`
+        let sql = `CREATE TABLE ${name} (id INT AUTO_INCREMENT PRIMARY KEY, prompts VARCHAR(255), stories TEXT, upvotes INT)`
         connection.query(sql, (err, result) => {
             if (err) return res.status(400).send(err)
             return res.status(200).send("Table created")
@@ -47,20 +47,20 @@ app.post('/create-table', (req, res) => {
     }
 })
 
-app.post('/create', (req, res) => {
-    const { prompt, story, upvote } = req.body
-    try {
-        connection.query("INSERT INTO stories (prompts,stories,upvotes) VALUES (?,?,?)", [prompt, story, upvote], (err, results, fields) => {
-            if (err) {
-                return res.status(400).send(err)
-            }
-            return res.status(200).send(results)
-        })
-    } catch (error) {
-        console.log(error)
-        return res.status(500).send(error)
-    }
-})
+// app.post('/create', (req, res) => {
+//     const { prompt, story, upvote } = req.body
+//     try {
+//         connection.query("INSERT INTO stories (prompts,stories,upvotes) VALUES (?,?,?)", [prompt, story, upvote], (err, results, fields) => {
+//             if (err) {
+//                 return res.status(400).send(err)
+//             }
+//             return res.status(200).send(results)
+//         })
+//     } catch (error) {
+//         console.log(error)
+//         return res.status(500).send(error)
+//     }
+// })
 
 app.post('/generate', async (req, res) => {
 
