@@ -1,2 +1,7 @@
 [build]
     base="fe"
+    
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
