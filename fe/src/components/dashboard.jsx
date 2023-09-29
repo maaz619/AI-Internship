@@ -1,6 +1,7 @@
 import { useState } from "react";
 import sendImg from "../assets/send.svg";
 import { generateStory } from "../service";
+import storyImage from "../assets/story.svg";
 import leaderboard from "../assets/leaderboard.svg";
 import { Link } from "react-router-dom";
 
@@ -23,9 +24,10 @@ const Dashboard = () => {
  return (
   <>
    <section className=" flex m-auto flex-col h-full sm:w-3/6 md:4/6 w-5/6">
-    <header className="text flex items-center justify-between">
+    <header className="text w-full flex items-center justify-between px-2">
      <h1 className=" font-extrabold text-4xl pt-6">Story</h1>
-     <Link to="/stories">
+     <Link className="flex gap-3" to="/stories">
+      <img className=" pt-6 h-16 md:hidden lg:hidden" src={storyImage} alt="" srcSet="" />
       <img className=" pt-6 h-16 md:hidden lg:hidden" src={leaderboard} alt="" srcSet="" />
      </Link>
     </header>
@@ -45,7 +47,7 @@ const Dashboard = () => {
      </div>
     )}
     {!loading && story && <article className="rounded-lg p-0 sm:p-10 w-full my-10 h-5/6 overflow-y-scroll">{story}</article>}
-    {!loading && !story && <div className=" justify-center items-center flex w-full my-10 h-5/6">Enter something to generate story</div>}
+    {!loading && !story && <div className=" justify-center items-center flex w-full my-10 text-xl h-5/6 font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">Enter something to generate story</div>}
     <form className="flex flex-col mb-8 justify-center flex-grow relative rounded-xl shadow-xs bg-white">
      <input
       value={prompt}
