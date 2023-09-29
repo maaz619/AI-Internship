@@ -26,10 +26,14 @@ const Dashboard = () => {
    <section className=" flex m-auto flex-col h-full sm:w-3/6 md:4/6 w-5/6">
     <header className="text w-full flex items-center justify-between px-2">
      <h1 className=" font-extrabold text-4xl pt-6">Story</h1>
-     <Link className="flex gap-3" to="/stories">
-      <img className=" pt-6 h-16 md:hidden lg:hidden" src={storyImage} alt="" srcSet="" />
-      <img className=" pt-6 h-16 md:hidden lg:hidden" src={leaderboard} alt="" srcSet="" />
-     </Link>
+     <div className="flex gap-x-5">
+      <Link className="" to="/stories">
+       <img className=" pt-6 h-16 md:hidden lg:hidden" src={storyImage} alt="" srcSet="" />
+      </Link>
+      <Link to="/leaderboard">
+       <img className=" pt-6 h-16 md:hidden lg:hidden" src={leaderboard} alt="" srcSet="" />
+      </Link>
+     </div>
     </header>
     {loading && (
      <div className=" justify-center items-center flex w-full my-10 h-5/6">
