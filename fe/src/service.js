@@ -1,7 +1,7 @@
 //prod
-// const BASE_URI = `https://api.plnews.live`
+const BASE_URI = `https://api.plnews.live`
 //dev
-const BASE_URI = `http://localhost:8090`
+// const BASE_URI = `http://localhost:8090`
 
 
 const getLeaderboard = async () => {
