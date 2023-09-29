@@ -83,9 +83,23 @@ app.post('/generate', async (req, res) => {
     }
 })
 
+app.get('/get-trending', (req, res) => {
+    try {
+        let sql = `SELECT * FROM stories ORDER BY upvotes DESC LIMIT 5;`
+        connection.query(sql, (err, result) => {
+            if (err) {
+                return res.status(400).send(err.stack)
+            }
+            return res.status(200).send(result)
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send(error)
+    }
+})
 app.get('/get-all', (req, res) => {
     try {
-        let sql = `SELECT * FROM stories ORDER BY upvotes DESC LIMIT 10;`
+        let sql = `SELECT * FROM stories`
         connection.query(sql, (err, result) => {
             if (err) {
                 return res.status(400).send(err.stack)

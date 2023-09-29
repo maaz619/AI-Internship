@@ -1,9 +1,18 @@
 //prod
-const BASE_URI = `https://api.plnews.live`
+// const BASE_URI = `https://api.plnews.live`
 //dev
-//const BASE_URI = `http://localhost:8090`
+const BASE_URI = `http://localhost:8090`
 
 
+const getLeaderboard = async () => {
+    const res = await fetch(BASE_URI + "/get-trending", {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    return res
+}
 const getAll = async () => {
     const res = await fetch(BASE_URI + "/get-all", {
         method: "GET",
@@ -35,4 +44,4 @@ const upvoteStory = async (id) => {
     return res
 }
 
-export { getAll, generateStory, upvoteStory }
+export { getAll, generateStory, upvoteStory, getLeaderboard }

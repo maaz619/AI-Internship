@@ -8,10 +8,12 @@ const Sidebar = ({ fetch }) => {
     <Link to={"/"}>
      <li>Home</li>
     </Link>
-    <Link to="/stories">
+    <Link to="/leaderboard">
      <li onClick={fetch}>Leaderboard</li>
     </Link>
-    {/* <li>Top prompts</li> */}
+    <Link to="/stories">
+     <li>Stories</li>
+    </Link>
    </ul>
   </aside>
  );
