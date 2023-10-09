@@ -7,11 +7,20 @@ dotenv.config()
 const openAiKey = process.env.OPENAI_API_KEY
 const aiClient = new OpenAI({ apiKey: openAiKey })
 
-const connection = mysql.createConnection({
+// const connection = mysql.createConnection({
+//     host: process.env.HOST,
+//     user: process.env.USER_NAME,
+//     password: process.env.PASSWORD,
+//     database: process.env.DB,
+// })
+const connection = mysql.createPool({
     host: process.env.HOST,
     user: process.env.USER_NAME,
     password: process.env.PASSWORD,
     database: process.env.DB,
+    waitForConnections: true,
+    connectionLimit: 15,
+    queueLimit: 0
 })
 
 const generateStory = async (prompt) => {
